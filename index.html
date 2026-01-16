@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultor em Probióticos</title>
+    <title>Probiótika | Ciência da Vida</title>
     <style>
         /* Variáveis de Cores */
         :root {
@@ -15,35 +15,33 @@
             --text-color: #2d3748;
         }
 
-        /* RESET PARA GOOGLE SITES */
-        html, body {
+        /* RESET GERAL */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
-            overflow: hidden; 
             background-color: var(--bg-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .wrapper {
-            width: 100%;
-            height: 100vh;
-            overflow-y: auto; 
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
         header {
             background-color: white;
-            padding: 1.5rem 20px 0 20px; /* Adicionado margem lateral de 20px */
+            padding: 2rem 20px 0 20px;
             text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         header h1 {
-            margin: 0 0 1rem 0;
+            margin: 0 0 1.5rem 0;
             color: var(--primary-color);
-            font-size: 1.8rem;
+            font-size: 2.2rem;
+            letter-spacing: -1px;
         }
 
         /* MENU PRINCIPAL */
@@ -61,7 +59,7 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Permite que o menu quebre linha se a tela for muito pequena */
+            flex-wrap: wrap;
         }
 
         nav ul li { position: relative; }
@@ -70,8 +68,9 @@
             display: block;
             color: white;
             text-decoration: none;
-            padding: 15px 20px;
+            padding: 18px 25px;
             font-weight: bold;
+            transition: 0.3s;
         }
 
         nav ul li a:hover { background-color: var(--dark-green); }
@@ -83,7 +82,7 @@
             top: 100%;
             left: 0;
             background-color: var(--dark-green);
-            min-width: 180px;
+            min-width: 200px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             padding: 0;
             list-style: none;
@@ -92,9 +91,8 @@
         .submenu li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
         .submenu li a {
-            padding: 12px 20px;
-            font-size: 0.9rem;
-            transition: background 0.3s;
+            padding: 15px 20px;
+            font-size: 0.95rem;
         }
 
         .submenu li a:hover {
@@ -103,75 +101,83 @@
 
         nav ul li:hover .submenu { display: block; }
 
-        /* SEÇÕES */
+        /* SEÇÃO HERO */
         .hero {
             background: linear-gradient(rgba(44, 122, 123, 0.7), rgba(44, 122, 123, 0.7)), url('https://images.unsplash.com/photo-1559839734-2b71f1e3c7e0?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 4rem 20px; /* Margem lateral de 20px */
+            padding: 6rem 20px;
             text-align: center;
         }
 
-        /* CONFIGURAÇÃO DE MARGENS LATERAIS */
+        .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+
+        /* CONTAINER CENTRALIZADO */
         .container {
-            max-width: 1100px; /* Largura máxima do conteúdo */
-            margin: 2rem auto; /* Centraliza o bloco e dá margem superior/inferior */
-            padding: 0 30px;   /* Margem lateral interna (respiro) */
-            box-sizing: border-box;
+            max-width: 1200px; 
+            margin: 4rem auto; 
+            padding: 0 30px;
         }
 
         .post-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
         .post-card {
             background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
         }
 
         .whatsapp-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             background-color: #25d366;
             color: white;
-            padding: 12px 20px;
+            padding: 15px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             z-index: 10000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         footer {
             text-align: center;
-            padding: 2rem 20px; /* Margem lateral de 20px */
+            padding: 4rem 20px;
             background: #2d3748;
             color: white;
-            margin-top: 2rem;
+            margin-top: 5rem;
         }
 
-        .texto-vermelho { color: #ff0000; font-weight: bold; }
-
-        @media (max-width: 600px) {
-            .submenu { position: static; width: 100%; }
-            .container { padding: 0 15px; } /* Margem menor em celulares */
+        @media (max-width: 768px) {
+            .submenu { position: static; width: 100%; box-shadow: none; }
+            .hero h2 { font-size: 1.8rem; }
+            .container { padding: 0 20px; }
         }
     </style>
 </head>
 <body>
 
-<div class="wrapper">
     <header>
         <h1>Probiótika</h1>
         <nav>
             <ul>
                 <li>
-                    <a href="https://sites.google.com/view/consultor-em-probiticos/in%C3%ADcio">Home ▼</a>
+                    <a href="#">Home ▼</a>
                     <ul class="submenu">
                         <li><a href="#">Sobre</a></li>
                         <li><a href="#">Missão</a></li>
@@ -195,33 +201,31 @@
     </section>
 
     <div class="container">
-        <h2 style="text-align: center; color: var(--primary-color);">Conteúdos Exclusivos</h2>
+        <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 3rem; font-size: 2rem;">Conteúdos Exclusivos</h2>
         <div class="post-grid">
             <article class="post-card">
                 <h3>O que é Disbiose?</h3>
-                <p>O desequilíbrio da flora intestinal pode afetar sua imunidade.</p>
-                <a href="#" style="color: var(--accent-color); font-weight: bold;">Ler mais →</a>
+                <p>O desequilíbrio da flora intestinal pode afetar sua imunidade de diversas formas.</p>
+                <a href="#" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">Ler mais →</a>
             </article>
             <article class="post-card">
                 <h3>O Segundo Cérebro</h3>
-                <p>O seu intestino produz 95% da serotonina do corpo.</p>
-                <a href="#" style="color: var(--accent-color); font-weight: bold;">Ler mais →</a>
+                <p>O seu intestino produz 95% da serotonina do corpo. Cuidar dele é fundamental.</p>
+                <a href="#" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">Ler mais →</a>
             </article>
             <article class="post-card">
                 <h3>Bem-estar Diário</h3>
-                <p>Pequenas mudanças transformam sua disposição.</p>
-                <a href="#" style="color: var(--accent-color); font-weight: bold;">Ler mais →</a>
+                <p>Pequenas mudanças diárias transformam sua disposição e alegria de viver.</p>
+                <a href="#" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">Ler mais →</a>
             </article>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Saúde em Harmonia</p>
+        <p>&copy; 2026 Probiótika - Saúde em Harmonia</p>
     </footer>
-</div>
 
-<a href="https://wa.me/5511950640669" class="whatsapp-btn" target="_blank">Fale com o Consultor 📱</a>
+    <a href="https://wa.me/5511950640669" class="whatsapp-btn" target="_blank">Fale com o Consultor 📱</a>
 
 </body>
-
 </html>
